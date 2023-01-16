@@ -23,7 +23,7 @@ public class GetPayees extends membershipOBANTestBase{
     String userId;
     int count = 0;
     int maxTries = 2;
-    String payload = new String(Files.readAllBytes(Paths.get("src/main/resources/apiRequest/openBankingAPI/Payees.json")));
+    String payload = new String(Files.readAllBytes(Paths.get("src/main/resources/openBankingAPIRequest/Payees.json")));
     CommonFunctions comm = new CommonFunctions();
 
     public GetPayees() throws IOException {
@@ -44,7 +44,7 @@ public class GetPayees extends membershipOBANTestBase{
         while(true){
             String url = "/Payees";
             String payloadFinal = payload.replace("{{userId}}", userId);
-            res= comm.serenityPostRequestMethod(payload,url);
+            res= comm.serenityPostRequestMethod(payloadFinal,url);
             if (res.statusCode() == 200) {
                 assert true;
                 break;

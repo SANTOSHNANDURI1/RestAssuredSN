@@ -76,6 +76,23 @@ public class CommonFunctions {
         return res;
     }
     /**
+     * Generic Method to post a request with no header to generate 400
+     * @param payloadFile
+     * @param url
+     * @return Sereity Response
+     */
+    public int serenityGetRequest(String url){
+        int res = SerenityRest.given().
+                //header("interaction-id", "sadasdsadsadasdsavgfh123-abc").
+                //header("api_key","031c9f08df23162159a95639bc94b826").
+                contentType(ContentType.JSON).
+                when().
+                get(url).
+                then().log().all().
+                extract().statusCode();
+        return res;
+    }
+    /**
      * Generic Method to post a request with no interaction ID to generate 400
      * @param payloadFile
      * @param url
